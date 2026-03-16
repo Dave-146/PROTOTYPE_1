@@ -48,8 +48,11 @@ const Layout = ({ children }) => {
 const AppContent = () => {
   const { isB2B } = useAudience();
 
+  // Vite sets BASE_URL from vite.config.js base (e.g. /PROTOTYPE_DOUBL/ for GitHub Pages)
+  const basename = import.meta.env.BASE_URL?.replace(/\/$/, '') || undefined;
+
   return (
-    <Router>
+    <Router basename={basename}>
       <ScrollToTop />
       <ErrorBoundary>
         <Layout>
